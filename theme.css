@@ -1,0 +1,158 @@
+/* ============================================================
+   Kioku — 黒地に、色は3つだけ
+   ------------------------------------------------------------
+   白に近い水色 … 表題と本文
+   水色〜シアン … 見出し・リンク（薄め）・タグ
+   薄い赤       … 斜体・折りたたみの三角
+
+   Obsidian 標準テーマの変数だけを上書きしている。
+   色を変えたいときは、すぐ下の「色の定義」だけ書き換える。
+   ============================================================ */
+
+/* --- 色の定義 ------------------------------------------------ */
+.theme-dark {
+  --kioku-ice: #e3f4fc;       /* 表題・本文：白に少しだけ水色 */
+  --kioku-cyan: #0fb6d6;      /* タグ */
+  --kioku-link: #74c4e0;      /* リンク：シアンを薄く */
+  --kioku-heading: #7ac6ff;   /* 見出し：淡い青 */
+  --kioku-rose: #f2a3a3;      /* 斜体・三角 */
+  --kioku-blue: #0c93ad;      /* 太字：スイッチと同じ深い青緑 */
+  --kioku-amber: #8f8558;     /* ファイル一覧のラベル（BASE など） */
+  --kioku-apricot: #f0b88a;   /* 差し色：カーソルと「いま開いているノート」の印 */
+}
+
+/* --- 地の色（黒）と、文字の濃淡 ------------------------------ */
+.theme-dark {
+  --color-base-00: #000000;
+  --color-base-05: #050607;
+  --color-base-10: #0a0c0e;
+  --color-base-20: #0e1114;
+  --color-base-25: #14181c;
+  --color-base-30: #1b2025;
+  --color-base-35: #252b32;
+  --color-base-40: #353d46;
+  --color-base-50: #56616c;
+  --color-base-60: #8795a1;
+  --color-base-70: #b4c5d1;
+  --color-base-100: var(--kioku-ice);
+
+  --background-primary: #000000;
+  --background-primary-alt: #0a0c0e;
+  --background-secondary: #050607;
+  --background-secondary-alt: #000000;
+  --titlebar-background: #000000;
+  --titlebar-background-focused: #000000;
+
+  --text-normal: var(--kioku-ice);
+  --text-muted: #9fb2bf;
+  --text-faint: #5f6e7a;
+}
+
+/* --- 文字まわり ---------------------------------------------- */
+.theme-dark {
+  /* 表題（ノート名） */
+  --inline-title-color: var(--kioku-ice);
+
+  /* 見出し */
+  --h1-color: var(--kioku-heading);
+  --h2-color: var(--kioku-heading);
+  --h3-color: var(--kioku-heading);
+  --h4-color: var(--kioku-heading);
+  --h5-color: var(--kioku-heading);
+  --h6-color: var(--kioku-heading);
+
+  /* タグ */
+  --tag-color: var(--kioku-cyan);
+  --tag-color-hover: var(--kioku-cyan);
+  --tag-background: rgba(15, 182, 214, 0.12);
+  --tag-background-hover: rgba(15, 182, 214, 0.22);
+
+  /* リンク・アクセント */
+  --text-accent: var(--kioku-link);
+  --text-accent-hover: #a8ddf0;
+  --link-color: var(--kioku-link);
+  --link-color-hover: #a8ddf0;
+  --link-external-color: var(--kioku-link);
+  --link-external-color-hover: #a8ddf0;
+  --link-unresolved-color: var(--kioku-link);
+  --interactive-accent: #0c93ad;
+  --interactive-accent-hover: var(--kioku-cyan);
+  --text-on-accent: #ffffff;
+  --text-selection: rgba(15, 182, 214, 0.28);
+
+  /* 太字・斜体 */
+  --bold-color: var(--kioku-blue);
+  --italic-color: var(--kioku-rose);
+
+  /* 折りたたみの三角 */
+  --collapse-icon-color: var(--kioku-rose);
+  --collapse-icon-color-collapsed: var(--kioku-rose);
+  --nav-collapse-icon-color: var(--kioku-rose);
+  --nav-collapse-icon-color-collapsed: var(--kioku-rose);
+}
+
+/* ファイル一覧の拡張子表示（BASE など）は濃い黄色 */
+.theme-dark .nav-file-tag,
+.theme-dark .nav-file-title.is-active .nav-file-tag,
+.theme-dark .nav-file-title:hover .nav-file-tag {
+  color: var(--kioku-amber);
+  background-color: transparent;
+}
+
+/* 見出し横・リスト横の三角は、標準では触れるまで薄く隠れている。
+   色が見えるよう、少しだけ出しておく。 */
+.theme-dark .markdown-source-view.mod-cm6 .cm-fold-indicator .collapse-indicator,
+.theme-dark .markdown-rendered .collapse-indicator {
+  opacity: 0.55;
+}
+.theme-dark .markdown-source-view.mod-cm6 .cm-line:hover .cm-fold-indicator .collapse-indicator,
+.theme-dark .markdown-source-view.mod-cm6 .is-collapsed .collapse-indicator,
+.theme-dark .markdown-rendered .collapse-indicator:hover,
+.theme-dark .markdown-rendered .is-collapsed > .collapse-indicator {
+  opacity: 1;
+}
+
+/* --- 見出し2の下線 --------------------------------------------
+   左から右へ消えていく水色の線。編集画面と閲覧画面の両方に引く。 */
+.theme-dark .markdown-rendered h2,
+.theme-dark .markdown-source-view.mod-cm6 .cm-line.HyperMD-header-2 {
+  padding-bottom: 0.3em;
+  background-image: linear-gradient(to right, var(--kioku-heading), transparent 85%);
+  background-size: 100% 2px;
+  background-position: left bottom;
+  background-repeat: no-repeat;
+}
+
+/* --- 文字の太さ ------------------------------------------------
+   標準より一段ずつ細くしている。和文ゴシック（ヒラギノ角ゴ）は
+   W3=300 / W6=600 の実体があるので、合成せずきれいに細くなる。 */
+.theme-dark {
+  --font-weight: 300;            /* 本文（標準は 400） */
+  --table-text-weight: 300;      /* 表の中も本文に揃える */
+  --inline-title-weight: 600;    /* 表題（標準は 700） */
+  --h1-weight: 600;
+  --h2-weight: 600;
+  --h3-weight: 600;
+  --h4-weight: 600;
+  --h5-weight: 600;
+  --h6-weight: 600;
+}
+
+/* 本文の太さは変数だけでは効かないため、編集画面・閲覧画面に直接当てる。
+   見出しと太字は自分の太さを持っているので影響を受けない。 */
+.theme-dark .markdown-source-view.mod-cm6 .cm-scroller,
+.theme-dark .markdown-rendered {
+  font-weight: var(--font-weight);
+}
+
+/* --- 差し色（淡いオレンジ）------------------------------------
+   「いまの位置」を示す2か所だけに使う。 */
+.theme-dark {
+  --caret-color: var(--kioku-apricot);
+}
+.theme-dark .nav-file-title.is-active {
+  background-image: linear-gradient(var(--kioku-apricot), var(--kioku-apricot));
+  background-size: 2px 60%;
+  background-position: left center;
+  background-repeat: no-repeat;
+}
