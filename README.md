@@ -1,11 +1,48 @@
 # Kioku
 
-黒地に、色は3つだけ。
-書くことに目を向けるための、静かなダークテーマです。
+A quiet dark theme for Obsidian: a black background and only three colors.
+Made for writing, especially in Japanese.
 
 ![Kioku](screenshot-large.png)
 
-## 考え方
+## Philosophy
+
+Subtract rather than add. Kioku keeps the number of colors small and keeps every one of them soft.
+
+| Role | Color |
+| --- | --- |
+| Title and body text | Icy white |
+| Headings, links, tags | Soft blue to cyan |
+| Italics and fold arrows | Pale rose |
+| Accent (cursor and active note only) | Apricot |
+
+- Body text uses a lighter weight (Hiragino Sans W3 on macOS) for long, comfortable reading.
+- Level-2 headings get a thin line that fades from left to right.
+- The theme only overrides Obsidian's default CSS variables, so it stays friendly with plugins.
+
+## Notes
+
+- Dark mode only. In light mode, Obsidian's default look is used.
+- Tuned and tested with Japanese text on macOS.
+
+## Customizing
+
+Edit the `--kioku-*` variables at the top of `theme.css`, or override them in a CSS snippet:
+
+```css
+.theme-dark {
+  --kioku-heading: #7ac6ff; /* headings */
+}
+```
+
+---
+
+## 日本語
+
+黒地に、色は3つだけ。
+書くことに目を向けるための、静かなダークテーマです。
+
+### 考え方
 
 足すより、引く。
 画面にある色を減らし、どれも淡く落ち着かせています。
@@ -22,29 +59,15 @@
 - 見出し2には、左から右へ消えていく細い線を引いています。
 - Obsidian 標準テーマの変数を上書きしているだけなので、プラグインとの相性を崩しにくい作りです。
 
-## 対応
+### 対応
 
 - ダークモード専用です。ライトモードでは Obsidian 標準の見た目になります。
 - 日本語の文章を書く人に向けて調整しています（macOS のヒラギノ角ゴで確認）。
 
-## 色を変えたいとき
+### 色を変えたいとき
 
 `theme.css` 冒頭の「色の定義」にある `--kioku-*` の値だけを書き換えれば、全体の色が変わります。
 CSS スニペットで同じ変数を上書きしても構いません。
-
-```css
-.theme-dark {
-  --kioku-heading: #7ac6ff; /* 見出し */
-}
-```
-
----
-
-## English
-
-**Kioku** is a quiet dark theme for Obsidian: a black background and only three colors — icy white for text, soft blue for headings and links, and pale rose for italics and fold arrows. A single apricot accent marks the cursor and the active note. Body text uses a lighter weight, tuned for writing in Japanese.
-
-Dark mode only. To customize, edit the `--kioku-*` variables at the top of `theme.css`, or override them in a CSS snippet.
 
 ## License
 
